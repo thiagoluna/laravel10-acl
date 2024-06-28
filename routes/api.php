@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PermissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
@@ -21,6 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/', fn () => response()->json([ 'message' => 'ok' ]));
+
+Route::apiResource('/permissions', PermissionController::class);
+
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
