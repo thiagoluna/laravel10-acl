@@ -42,7 +42,10 @@ class AuthController extends Controller
      */
     public function me(): UserResource
     {
-        return new UserResource(Auth::user());
+        $user = Auth::user();
+        $user->load('permissions');
+
+        return new UserResource($user);
     }
 
     /**

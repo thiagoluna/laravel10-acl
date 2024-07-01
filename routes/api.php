@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\PermissionController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\PermissionController;
+use App\Http\Controllers\Api\PermissionUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,14 @@ Route::get('/', fn () => response()->json([ 'message' => 'ok' ]));
 Route::post('/auth', [AuthController::class, 'auth'])->name('user.auth');
 
 Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('/users/{user}/permissions-sync', [
+        PermissionUserController::class, 'syncUserPermissions'
+    ])->name('user.permissions.sync');
+    Route::get('/users/{user}/permissions-sync', [
+        PermissionUserController::class, 'getUserPermissions'
+    ])->name('user.permissions.get');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('user.auth');
     Route::get('/me', [AuthController::class, 'me'])->name('user.auth');
 });

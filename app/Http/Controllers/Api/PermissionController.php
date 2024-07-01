@@ -22,13 +22,13 @@ class PermissionController
      */
     public function index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        $users = $this->permissionRepository->getPaginate(
+        $permissions = $this->permissionRepository->getPaginate(
             filter: $request->filter ?? '',
             page: $request->page ?? 1,
             totalPerPage: $request->total_per_page ?? 15
         );
 
-        return PermissionResource::collection($users);
+        return PermissionResource::collection($permissions);
     }
 
     /**

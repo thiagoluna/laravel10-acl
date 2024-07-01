@@ -5,9 +5,7 @@ namespace App\Repositories;
 use App\Dto\Users\CreateUserDto;
 use App\Dto\Users\EditUserDto;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Hash;
 
 class UserRepository
 {
@@ -15,6 +13,12 @@ class UserRepository
     {
     }
 
+    /**
+     * @param string $filter
+     * @param int $page
+     * @param int $totalPerPage
+     * @return LengthAwarePaginator
+     */
     public function getAllUsers(string $filter = '', int $page = 1, int $totalPerPage = 15): LengthAwarePaginator
     {
         return $this->user->where(function ($query) use ($filter) {
@@ -22,10 +26,15 @@ class UserRepository
                 $query->where('name', 'LIKE', "%{$filter}%");
             }
         })
+            ->with(['permissions'])
             ->orderBy('id', 'desc')
             ->paginate($totalPerPage, ['*'], 'page', $page);
     }
 
+    /**
+     * @param CreateUserDto $userDto
+     * @return User
+     */
     public function createNew(CreateUserDto $userDto): User
     {
         $data = (array) $userDto;
@@ -33,16 +42,28 @@ class UserRepository
         return $this->user->create($data);
     }
 
+    /**
+     * @param string $id
+     * @return User|null
+     */
     public function findById(string $id): ?User
     {
         return $this->user->find($id);
     }
 
+    /**
+     * @param string $email
+     * @return User|null
+     */
     public function findByEmail(string $email): ?User
     {
         return $this->user->where('email', $email)->first();
     }
 
+    /**
+     * @param EditUserDto $userDto
+     * @return bool
+     */
     public function update(EditUserDto $userDto): bool
     {
         if (!$user = $this->findById($userDto->id)) {
@@ -58,6 +79,10 @@ class UserRepository
         return $user->update($data);
     }
 
+    /**
+     * @param string $id
+     * @return bool
+     */
     public function delete(string $id): bool
     {
         if (!$user = $this->findById($id)) {
@@ -65,5 +90,26 @@ class UserRepository
         }
 
         return $user->delete();
+    }
+
+    /**
+     * @param string $id
+     * @param array $permissions
+     * @return bool|null
+     */
+    public function syncPermissions(string $id, array $permissions): ?bool
+    {
+        if (!$user = $this->findById($id)) {
+            return null;
+        }
+
+        $user->permissions()->sync($permissions);
+
+        return true;
+    }
+
+    public function getUserPermissionsById(string $id): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->findById($id)->permissions()->get();
     }
 }
