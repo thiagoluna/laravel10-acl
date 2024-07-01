@@ -1,68 +1,51 @@
+<h4 align="center">
+🚀 Laravel 10 - Authentication and Authorization with Sanctum and ACL in Laravel
+</h4>
 
-# Setup Docker Laravel 10 com PHP 8.1
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+<p align="center">
+ <img alt="PHPCS compliance" src="https://img.shields.io/static/v1?label=PHPCS&message=compliance&color=3fb950&labelColor=333333">
+ <img alt="PHPStan compliance" src="https://img.shields.io/static/v1?label=PHPStan&message=compliance&color=3fb950&labelColor=333333">
+ <img alt="PRs welcome!" src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=7159c1&labelColor=000000"  />
+</p>
 
-### Passo a passo
-Clone Repositório
-```sh
-git clone -b laravel-10-com-php-8.1 https://github.com/especializati/setup-docker-laravel.git app-laravel
-```
-```sh
-cd app-laravel
-```
+## :rocket: Tecnologias
 
+This project was developed with the technologies below:
 
-Crie o Arquivo .env
-```sh
-cp .env.example .env
-```
-
-
-Atualize as variáveis de ambiente do arquivo .env
-```dosini
-APP_NAME="Especializa Ti"
-APP_URL=http://localhost:8989
-
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=root
-
-CACHE_DRIVER=redis
-QUEUE_CONNECTION=redis
-SESSION_DRIVER=redis
-
-REDIS_HOST=redis
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-```
+- [PHP 8.1](https://php.net)
+- [Laravel 10](https://laravel.com)
+- [MySQL 5.7](https://mysql.com)
+- [Docker](https://docker.com)
 
 
-Suba os containers do projeto
-```sh
-docker-compose up -d
-```
+## 💻 Project
+
+This project is a Restful API developed as an practical example of an API with authentication and authorization using
+Laravel, Repository Pattern, Sanctum, Middleware and other techniques.  
 
 
-Acesse o container app
-```sh
-docker-compose exec app bash
-```
+## About Me
+I am a Senior Software Developer with more than 10 years of experience developing software with high standards and interacting with multiple stakeholders from technical and non-technical backgrounds, ensuring clarity, quality, and continuous delivery. I have a Bachelor's Degree in Computer Science, Postgraduate in IT Project Management and work with technologies such as PHP, Laravel, HTML, JavaScript, CSS, GitHub, MySQL, Postgres and SqlServer.
+Scrum Master, leading a developers team, with knowledge of mentoring, skill improvement. Great understanding of how to create and motivate cohesive teams and inspire them. I am willing to learn new technologies, tools, cultures to contribute a build interactive and innovative applications.
+
+## Contact me
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/thiago-luna/)
+
+## Some Skills
+![PHP](https://img.shields.io/badge/PHP-fff?style=for-the-badge&logo=php)
+![LARAVEL](https://img.shields.io/badge/LARAVEL-000?style=for-the-badge&logo=laravel)
+![RABITMQ](https://img.shields.io/badge/rabbitmq-E34F26?style=for-the-badge&logo=rabbitmq&logoColor=white)
+![MYSQL](https://img.shields.io/badge/MySQL-fff?style=for-the-badge&logo=mysql)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/bootstrap-000?style=for-the-badge&logo=bootstrap&logoColor=553C7B)
+[![Git](https://img.shields.io/badge/Git-000?style=for-the-badge&logo=git&logoColor=E94D5F)](https://git-scm.com/doc)
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=30A3DC)](https://docs.github.com/)
 
 
-Instale as dependências do projeto
-```sh
-composer install
-```
+## GitHub Stats
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=thiagoluna&theme=transparent&bg_color=000&border_color=30A3DC&show_icons=true&icon_color=30A3DC&title_color=E94D5F&text_color=FFF)
 
-
-Gere a key do projeto Laravel
-```sh
-php artisan key:generate
-```
-
-
-Acesse o projeto
-[http://localhost:8989](http://localhost:8989)
+## Most used languages
+![Top Langs](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=thiagoluna&layout=compact&bg_color=000&border_color=30A3DC&title_color=E94D5F&text_color=FFF)
