@@ -112,4 +112,16 @@ class UserRepository
     {
         return $this->findById($id)->permissions()->get();
     }
+
+    /**
+     * @param User $user
+     * @param string $permissionName
+     * @return bool
+     */
+    public function hasPermissions(User $user, string $permissionName): bool
+    {
+        if ($user->isSuperAdmin()) return true;
+
+        return $user->permissions()->where('permissions.name', $permissionName)->exists();
+    }
 }
